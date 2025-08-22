@@ -1,0 +1,32 @@
+FROM python:alpine
+
+# hadolint ignore=DL3018
+RUN : \
+    set -eux \
+    \
+    && apk update \
+    && apk add --no-cache \
+        # required by mise plugins:
+        bash \
+        curl \
+        git \
+        # required by `pre-commit` hooks:
+        gcc \
+        libstdc++ \
+        musl-dev \
+        perl \
+        # required by github actions:
+        jq \
+        openssh-client \
+        tar \
+    && \
+    rm -rf ~/.cache /tmp/*
+
+SHELL [ "/bin/bash", "-o", "pipefail", "-c" ]
+
+ENV MISE_DATA_DIR=/root/.local/share/mise
+ENV PATH="${MISE_DATA_DIR}/shims:$PATH"
+
+RUN curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
+
+ENTRYPOINT ["/bin/bash"]
