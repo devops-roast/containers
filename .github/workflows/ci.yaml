@@ -6,12 +6,13 @@ on:
   push:
     branches:
       - main
-    paths:
+    paths: &ci_paths
       - "docker-bake.hcl"
       - "**/Dockerfile*"
       - ".github/workflows/ci.yaml"
   pull_request:
     types: [opened, synchronize, reopened]
+    paths: *ci_paths
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
