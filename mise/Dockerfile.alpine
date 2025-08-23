@@ -1,10 +1,11 @@
 FROM python:alpine
 
+ARG mise_version
+
 # hadolint ignore=DL3018
 RUN : \
     set -eux \
     \
-    && apk update \
     && apk add --no-cache \
         # required by mise plugins:
         bash \
@@ -22,11 +23,14 @@ RUN : \
     && \
     rm -rf ~/.cache /tmp/*
 
-SHELL [ "/bin/bash", "-o", "pipefail", "-c" ]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV MISE_DATA_DIR=/root/.local/share/mise
+ENV MISE_INSTALL_PATH=/usr/local/bin/mise
+ENV MISE_VERSION="v${mise_version}"
+
 ENV PATH="${MISE_DATA_DIR}/shims:$PATH"
 
-RUN curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
+RUN curl https://mise.run | sh
 
 ENTRYPOINT ["/bin/bash"]
