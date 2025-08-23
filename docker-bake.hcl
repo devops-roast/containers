@@ -15,7 +15,15 @@ function "tags" {
   ]
 }
 
+target "docker-metadata-action" {}
+target "github-metadata-action" {}
+
 target "common" {
+  inherits = [
+    "docker-metadata-action",
+    "github-metadata-action",
+  ]
+
   labels = {
     "org.opencontainers.image.authors" = "DevOps Roast <support+github@devops-roast.com>"
     "org.opencontainers.image.source"  = "https://github.com/devops-roast/containers"
