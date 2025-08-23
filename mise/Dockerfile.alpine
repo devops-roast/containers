@@ -15,6 +15,7 @@ RUN : \
         gcc \
         libstdc++ \
         musl-dev \
+        make \
         perl \
         # required by github actions:
         jq \
