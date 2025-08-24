@@ -1,0 +1,20 @@
+{
+  "default": true,
+  "first-header-h1": false,
+  "first-line-h1": false,
+  "line_length": false,
+  "no-multiple-blanks": false,
+  "fenced-code-language": true,
+  "no-duplicate-header": {
+    "siblings_only": true
+  },
+  "code-block-style": {
+    "style": "fenced"
+  },
+  "MD033": {
+    "allowed_elements": [
+      "details",
+      "summary"
+    ]
+  }
+}
