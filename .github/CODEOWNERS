@@ -1,0 +1,10 @@
+# https://help.github.com/articles/about-codeowners
+#
+# The owners below are the default reviewers for all files in this repository.
+# A more specific match later in the file will override this default.
+#
+# Rule order matters: the last matching pattern takes precedence. For example,
+# if a pull request only changes files in `.github/workflows`, only the owners
+# specified for that path (and not the global owners) will be requested.
+
+*  @shmileee
