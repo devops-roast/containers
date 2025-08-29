@@ -11,10 +11,5 @@
   "code-block-style": {
     "style": "fenced"
   },
-  "MD033": {
-    "allowed_elements": [
-      "details",
-      "summary"
-    ]
-  }
+  "MD033": false
 }
